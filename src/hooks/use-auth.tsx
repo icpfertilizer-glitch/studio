@@ -102,7 +102,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         router.push('/dashboard');
       }
     } catch (error: any) {
-        if (error.code === 'auth/popup-closed-by-user') {
+        if (error.code === 'auth/popup-closed-by-user' || error.code === 'auth/cancelled-popup-request') {
             console.log('Sign-in popup closed by user.');
             return;
         }
