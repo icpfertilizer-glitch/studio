@@ -1,3 +1,4 @@
+
 'use client';
 
 import type { User } from 'firebase/auth';
@@ -100,7 +101,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       } else {
         router.push('/dashboard');
       }
-    } catch (error) {
+    } catch (error: any) {
+        if (error.code === 'auth/popup-closed-by-user') {
+            console.log('Sign-in popup closed by user.');
+            return;
+        }
       console.error('Microsoft sign-in error:', error);
       toast({
         variant: 'destructive',
