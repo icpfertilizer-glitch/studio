@@ -103,7 +103,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     } catch (error: any) {
         if (error.code === 'auth/popup-closed-by-user' || error.code === 'auth/cancelled-popup-request') {
-            console.log('Sign-in popup closed by user.');
+            console.log('Sign-in popup was closed or cancelled.');
             return;
         }
       console.error('Microsoft sign-in error:', error);
